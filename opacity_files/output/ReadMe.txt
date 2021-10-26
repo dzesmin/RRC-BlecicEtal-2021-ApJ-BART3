@@ -1,0 +1,1 @@
+The opacity file named: opacity_file_ExoMol_H2O-CO2_NH3_HCN_C2H2_C2H4_H2S_TiO_VO_HITEMP_CO-CH4_11mol_061-55_300_3000K_1e100.dat is provided on zenodo.

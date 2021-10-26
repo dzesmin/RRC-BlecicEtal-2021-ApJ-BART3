@@ -1,7 +1,16 @@
 
 ####### IMPORTANT NOTE: 
-# the code works for Python 3.6 
+'''
+Execute all the commands as listed. This will generate all neccesery outputs
+and files to reproduce the paper plots.
 
+In this repository, we provide all the outputs, obeying the github size limit.
+Some intermediary files could not be included as they exceed the size limit. 
+
+On zenodo, https://zenodo.org/deposit/xxxxx, we provide these big intermediate 
+files together with all other inputs and outputs, neccessery to reproduce all 
+the paper figures.
+'''
 
 ##################################
 # Source files used in this paper
@@ -16,10 +25,12 @@
 
 4. CIA files are provided in CIA/ folder
 
-5. Tep file carrying all the system parameters 
-   is provided in tepfile/ folder
+5. Tep file carrying all the system parameters is provided in tepfile/ folder
 
 6. All filter files are provided in the WASP43b_filt/ folder
+
+7. EXOMOL and HITRAN directories contain the required subdirectory structure
+   to place the downloaded files from the provided links.
 '''
 
 ##################################
@@ -130,6 +141,12 @@ cd tli_files
 # 7 molecules for Section 3.4
 ../BART/modules/transit/pylineread/src/pylineread.py -c pyline_7mol_0.61-5.5um.cfg
 
+# 11 molecules
+''' 
+this tli file is provided on zenodo in the tli_files/output/ directory 
+'''
+../BART/modules/transit/pylineread/src/pylineread.py -c pyline_11mol_0.61-5.5um.cfg
+
 
 #####################
 # MAKE OPACITY FILES
@@ -143,6 +160,13 @@ cd opacity_files
 # make opacity file using transit_7species.cfg file
 ../BART/modules/transit/transit/transit -c transit_7species.cfg
 
+# make opacity file using transit_11species.cfg file
+'''
+this opacity file is provided on zenodo in the opacity_files/output/ directory
+'''
+../BART/modules/transit/transit/transit -c transit_11species.cfg
+
+
 ####################
 # FIGURE 5
 ####################
@@ -152,7 +176,6 @@ cd Figure_5
 # run them as:
 
 # for all the tli files and all the molecules do
-
 ../BART/modules/transit/transit/transit -c transit_[moleculeName].cfg
 
 # run code to make plots of spectra
@@ -162,11 +185,18 @@ copy paste the code
 
 # this run will also make the corresponding opacity files
 # and place them in the same directory
-
-# run code to make plots of opacities
+# using these opacity files  you can make plots of opacities by executing
 # read_opacity_mol.py
 ipython
 copy paste the code
+
+# the same plots can be produced using the provided opacity file
+# opacity_files/output/opacity_file_ExoMol_H2O-CO2_NH3_HCN_C2H2_C2H4_H2S_TiO_VO_HITEMP_CO-CH4_11mol_061-55_300_3000K_1e100.dat
+# and this code: read_opacity_allmol.py
+ipython
+copy paste the code
+
+# output files and figures are provided in the Figure_5/output/ directory
 
 
 #######################
@@ -187,8 +217,12 @@ plot_Hist.py
 plot_PTprofiles.py
 plot_Spec_output-indivSpecs.py
 
-# Figure 9 is given in /4species_4opac_uniform/ folder
-# it is named output_pairwise.png
+# outputs and paper plots are provided in /output/plots/
+# large file sizes that exceed 100MB github file limit are provided on zenodo
+# in the same directory
+
+# pairwise correlation plot can be reproduced by running BART
+# without reruning MCMC using the option (--justPlots) 
 
 
 #######################
@@ -209,8 +243,12 @@ plot_Hist.py
 plot_PTprofiles.py
 plot_Spec_output-indivSpecs.py
 
-# Figure 13 is given in /7species_7opac_uniform/ folder
-# it is named output_pairwise.png
+# outputs and paper plots are provided in /output/plots/
+# large file sizes that exceed 100MB github file limit are provided on zenodo
+# in the same directory
+
+# pairwise correlation plot can be reproduced by running BART
+# without reruning MCMC using the option (--justPlots) 
 
 
 ####################
@@ -218,8 +256,10 @@ plot_Spec_output-indivSpecs.py
 ####################
 
 cd Figure_14
-# left panel is placed in Section 3.3/4species_4opac_uniform/
-# it is named MCMC_PTprofiles_cf.png
+
+# left panel is provided in Section3.3/output/plots/
+# this plot can be reproduced by running BART without reruning MCMC 
+# using the option (--justPlots) 
 
 # right panel
 plot_toomuch.py

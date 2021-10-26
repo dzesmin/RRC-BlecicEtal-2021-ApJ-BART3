@@ -99,7 +99,7 @@ def plot_pressure(fileName, plotName):
 
 
 # 4mol 4 opac
-fileName = './Section_3.4/4species_4opac_uniform/4species_4opac_uniform-toom.dat'
+fileName = '../Section_3.3/4species_4opac_uniform/4species_4opac_uniform-toom.dat'
 plotName = '4mol_4opac'
 plot_pressure(fileName, plotName)
 
